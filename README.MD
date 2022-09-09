@@ -16,10 +16,4 @@
 
 ## Limitations 
 
-Try to complete task in roughly 3 hours
-
-## Exclusions
-
-In the interview it was mentioned that there was a push to move to TypeScript however the test has been supplied in Javascript. 
-
-I've decided to stay with JavaScript but would be happy to re-submit in TypeScript if required.
+Try to complete task in roughly 1 afternoon
