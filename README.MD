@@ -16,7 +16,7 @@
 
 ## Limitations 
 
-Try to complete task in roughyly 3 hours
+Try to complete task in roughly 3 hours
 
 ## Exclusions
 
