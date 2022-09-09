@@ -1,6 +1,7 @@
 const express = require("express");
 
 const app = express();
+const port = 3333;
 
 //Step 1: Replace the array with data comming from https://swapi.dev/api/people.
 //Step 2: Add support for local pagination.
@@ -34,4 +35,4 @@ app.get("/", (req, res) => {
   res.status(200).json({ data });
 });
 
-app.listen(8080);
+app.listen(port);
