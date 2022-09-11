@@ -16,10 +16,8 @@
 
 ## Limitations 
 
-Try to complete task in roughyly 3 hours
+Try to complete task in roughly 1 afternoon
+Friday: Start| Midday - Finish| 2pm
+Monday: Start| 8:30am 
 
-## Exclusions
 
-In the interview it was mentioned that there was a push to move to TypeScript however the test has been supplied in Javascript. 
-
-I've decided to stay with JavaScript but would be happy to re-submit in TypeScript if required.
