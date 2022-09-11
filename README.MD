@@ -17,3 +17,5 @@
 ## Limitations 
 
 Try to complete task in roughly 1 afternoon
+Friday: Start| Midday - Finish| 2pm
+Monday: Start| 8:30am 
