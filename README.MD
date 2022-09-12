@@ -20,4 +20,18 @@ Try to complete task in roughly 1 afternoon
 Friday: Start| Midday - Finish| 2pm
 Monday: Start| 8:30am 
 
+## Solution Design (WIP-03)
 
+Swagger docs at /api-docs
+
+### Step 1 
+/people 
+
+### Step 2
+/people?page=1&limit=3
+
+### Step 3
+/people?sort=alphabetical&sort_order=ascending&page=1&limit=3
+
+### Step 4
+/people?sort=appearances&sort_order=ascending&page=1&limit=3
