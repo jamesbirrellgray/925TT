@@ -1,15 +1,16 @@
 import { hash } from 'bcrypt';
 import { CreatePersonDto } from '@dtos/people.dto';
 import { HttpException } from '@exceptions/HttpException';
-import { Person } from '@interfaces/people.interface';
-import personModel from '@models/people.model';
+import { People } from '@interfaces/people.interface';
+import peopleModel from '@models/people.model';
 import { isEmpty } from '@utils/util';
 
 class PersonService {
-  public people = new personModel();
+  public people = new peopleModel();
 
-  public async findAllPeople(): Promise<Person[]> {
-    const people: Promise<Person[]> = this.people.findAllPeople();
+  public async findAllPeople(page?: string): Promise<People> {
+     // @ts-ignore
+    const people: Promise<People> = this.people.findAllPeople(page);
     return people;
   }
 }

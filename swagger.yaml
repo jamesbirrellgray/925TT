@@ -1,17 +1,66 @@
-
-
+openapi: 3.0.3
+info:
+  title: Assignment-phase-01 - OpenAPI 3.0
+  description: |-
+    This is the API for Nine25 Assignment Phase 1
+  contact:
+    email: jamesbirrellgray@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://TBC/
+tags:
+  - name: people
+    description: seatch for the people
 paths:
-# [GET] People
+  # [GET] People
   /people:
-    get:
-      tags:
-      - people
-      summary: Find People
-      responses:
-        200:
-          description: 'Ok'
-        500:
-          description: 'Oh damn son!'
+      get:
+        tags:
+          - People
+        summary: Find the people
+        description: Multiple status values can be provided with comma separated strings
+        operationId: findPetsByStatus
+        parameters:
+          - name: page
+            in: query
+            description: used for pagination
+            required: false
+            schema:
+              type: number
+          # - name: sort
+          #   in: query
+          #   description: Status values that need to be considered for filter
+          #   required: false
+          #   explode: true
+          #   schema:
+          #     type: string
+          #     default: available
+          #     enum:
+          #       - available
+          #       - pending
+          #       - sold
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Person'          
+              application/xml:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Person'
+          '400':
+            description: Invalid status value
 # # [GET] users
 #   /users:
 #     get:
@@ -113,24 +162,34 @@ paths:
 #           description: 'Server Error'
 
 # definitions
+
 definitions:
   Person:
     type: object
-    required:
-        - name
-        - height
-        - url
     properties:
       name:
         type: string
-        description: Person's name
+        example: Jimmy
       height:
         type: string
-        description: Person's height
+        example: '172'
       url:
         type: string
-        description: Person's url
-
+        example: http://thisapi.com/person/1
+    xml:
+      name: person
+  ApiResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      type:
+        type: string
+      message:
+        type: string
+    xml:
+      name: '##default'
 schemes:
- - https
- - http
+  - https
+  - http

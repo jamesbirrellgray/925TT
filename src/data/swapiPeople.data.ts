@@ -3,10 +3,14 @@ import { SWAPI_BASE_URL } from '@config';
 import axios from 'axios';
 
 class SwapiPeopleData {
-  public async getSwapiPeople() {
+  public async getSwapiPeople(page?: string) {
     let res: SwapiPeople;
     try {
-      const { data } = await axios.get(SWAPI_BASE_URL + 'people');
+      const { data } = await axios.get(SWAPI_BASE_URL + 'people', {
+        params: {
+          ...(page ? { page: page } : {}),
+        },
+      });
       res = data;
       //console.log(res);
       return res;
