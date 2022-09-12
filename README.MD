@@ -35,3 +35,8 @@ Swagger docs at /api-docs
 
 ### Step 4
 /people?sort=appearances&sort_order=ascending&page=1&limit=3
+
+
+## Improvemts
+- Discovery on index
+- Better unit test
