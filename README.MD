@@ -28,13 +28,13 @@ Swagger docs at /api-docs
 /people 
 
 ### Step 2
-/people?page=1&limit=3
+/people?page=
 
 ### Step 3
-/people?sort=alphabetical&sort_order=ascending&page=1&limit=3
+/people?sort=alphabetical&sort_order=ascending&page=1
 
 ### Step 4
-/people?sort=appearances&sort_order=ascending&page=1&limit=3
+/people?sort=appearances&sort_order=ascending&page=1
 
 
 ## Improvemts

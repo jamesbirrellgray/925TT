@@ -4,10 +4,15 @@ import { Person } from '@interfaces/people.interface';
 import personService from '@services/people.service';
 
 class PeopleController {
-
   public personService = new personService();
 
-  public getPeople = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  public getPeople = async (
+    req: Request<{
+      page: number;
+    }>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const findAllPeopleData: Person[] = await this.personService.findAllPeople();
 
@@ -16,7 +21,6 @@ class PeopleController {
       next(error);
     }
   };
-
 }
 
 export default PeopleController;

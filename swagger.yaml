@@ -7,11 +7,18 @@ paths:
       tags:
       - people
       summary: Find People
-      responses:
-        200:
-          description: 'Ok'
-        500:
-          description: 'Oh damn son!'
+      parameters:
+      - in: path
+        name: page
+        schema:
+          type: integer
+        required: false
+        description: Numeric ID of the page for results pagination
+    responses:
+      200:
+        description: 'All good hollywood! Your request was served quicker than a maccas drive through!'
+      500:
+        description: 'Oh damn son! Looks like we are up a creek without a paddle. Sorry about this, please retry!'
 # # [GET] users
 #   /users:
 #     get:
