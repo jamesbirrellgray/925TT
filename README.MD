@@ -22,6 +22,8 @@ Monday: Start| 8:30am
 
 ## Solution Design (WIP-03)
 
+Swagger docs at /api-docs
+
 ### Step 1 
 /people 
 
