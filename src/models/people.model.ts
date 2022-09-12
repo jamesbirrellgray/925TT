@@ -1,29 +1,20 @@
 import { Person } from '@interfaces/people.interface';
+import SwapiPeopleData from '@/data/swapiPeople.data';
+import { SwapiPeople, SwapiPerson } from '@interfaces/swapiPeople.interface';
 
+class PersonModel {
+  public swapiPeopleData = new SwapiPeopleData();
 
-// console.log(swapiPeopleData.getSwapiPeople);
-// password: password
-const personModel: Person[] = [
-  {
-    name: "Luke Skywalker",
-    height: "172",
-    url: "https://swapi.dev/api/people/1/"
-  },
-  {
-    name: "C-3PO",
-    height: "167",
-    url: "https://swapi.dev/api/people/2/"
-  },
-  {
-    name: "R2-D2",
-    height: "96",
-    url: "https://swapi.dev/api/people/3/"
-  },
-  {
-    name: "Darth Vader",
-    height: "202",
-    url: "https://swapi.dev/api/people/4/"
+  public async findAllPeople(): Promise<Person[]> {
+    // Get the data from the model (SWAPI Request)
+    const peopleData: SwapiPeople = await this.swapiPeopleData.getSwapiPeople();
+    // For this Task extract the results
+    const peopleDataResults: SwapiPerson[] = peopleData.results;
+    // Map to new object
+    const reducedPeopleData = peopleDataResults.map(person => ({ name: person.name, height: person.height, url: person.url }));
+
+    return reducedPeopleData;
   }
-];
+}
 
-export default personModel;
+export default PersonModel;
