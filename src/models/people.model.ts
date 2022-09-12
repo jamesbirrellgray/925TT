@@ -1,5 +1,7 @@
 import { Person } from '@interfaces/people.interface';
 
+
+// console.log(swapiPeopleData.getSwapiPeople);
 // password: password
 const personModel: Person[] = [
   {

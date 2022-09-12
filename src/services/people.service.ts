@@ -5,15 +5,14 @@ import { Person } from '@interfaces/people.interface';
 import personModel from '@models/people.model';
 import { isEmpty } from '@utils/util';
 
-class PersonService {
 
+class PersonService {
   public people = personModel;
 
   public async findAllPeople(): Promise<Person[]> {
     const people: Person[] = this.people;
     return people;
   }
-
 }
 
 export default PersonService;

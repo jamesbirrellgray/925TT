@@ -1,5 +1,5 @@
 {
-  "name": "Assignment-phase-01",
+  "name": "assignment-phase-01",
   "version": "0.0.1",
   "description": "TypeScript + Express API Server",
   "author": "",
@@ -16,6 +16,9 @@
     "deploy:dev": "pm2 start ecosystem.config.js --only dev"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node-fetch": "^2.6.2",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
