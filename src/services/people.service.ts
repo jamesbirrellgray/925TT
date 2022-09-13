@@ -5,6 +5,7 @@ import FilmModel from '@/models/films.model';
 import Sorted from '@utils/sorted';
 
 class PeopleService {
+  
   private people = new peopleModel();
   private films = new FilmModel();
 
