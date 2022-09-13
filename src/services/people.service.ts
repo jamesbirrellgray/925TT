@@ -8,9 +8,9 @@ class PeopleService {
 
   public async findAllPeople(sort_by?: string, order?: string) {
     // @ts-ignore
-    const people = await this.people.getAllThePeople();
+    const people: Promise<People> = await this.people.getAllThePeople();
     // empty array to store sorted array
-    let poepleSorted = [];
+    let poepleSorted:Promise<People>;
     // Set ascending / decending
     let ordered = true;
     switch (order) {
