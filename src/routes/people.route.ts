@@ -4,6 +4,7 @@ import { CreatePersonDto } from '@dtos/people.dto';
 import { Routes } from '@interfaces/routes.interface';
 import validationMiddleware from '@middlewares/validation.middleware';
 
+
 class PeopleRoute implements Routes {
   public path = '/people';
   public router = Router();
@@ -14,6 +15,8 @@ class PeopleRoute implements Routes {
   }
 
   private initializeRoutes() {
+
+
     this.router.get(`${this.path}`, this.peopleController.getPeople);
   }
 }

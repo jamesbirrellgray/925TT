@@ -8,10 +8,23 @@ import { isEmpty } from '@utils/util';
 class PersonService {
   public people = new peopleModel();
 
-  public async findAllPeople(page?: string): Promise<People> {
-     // @ts-ignore
-    const people: Promise<People> = this.people.findAllPeople(page);
-    return people;
+  public async findAllPeople(page?: string, sort_by?: string, order?: string) {
+    // @ts-ignore
+    const people = await this.people.findAllPeople(page);
+    console.log(people);
+    let poepleSorted = people;
+    switch (sort_by) {
+      case 'Alphabetcial':
+        poepleSorted = people;
+      case 'Appearances':
+        poepleSorted = people;
+      default:
+        poepleSorted = people;
+    }
+  }
+
+  private sortAlphabetical(order) {
+    
   }
 }
 
