@@ -1,5 +1,13 @@
 # Nine25 Test
 ###### By James A. Birrell Gray
+
+## Instructions
+
+1. `npm install`
+2. `npm start`
+3. [http://localhost:3000/api-docs/] (http://localhost:3000/api-docs/)
+
+
 ---
 ## Tasks set out in index.js
 
