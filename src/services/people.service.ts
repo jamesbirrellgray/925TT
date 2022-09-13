@@ -1,18 +1,44 @@
-import { hash } from 'bcrypt';
-import { CreatePersonDto } from '@dtos/people.dto';
-import { HttpException } from '@exceptions/HttpException';
 import { People } from '@interfaces/people.interface';
 import peopleModel from '@models/people.model';
-import { isEmpty } from '@utils/util';
+import Sorted from '@/utils/sorted';
 
-class PersonService {
+class PeopleService {
+ 
   public people = new peopleModel();
 
-  public async findAllPeople(page?: string): Promise<People> {
-     // @ts-ignore
-    const people: Promise<People> = this.people.findAllPeople(page);
-    return people;
+  public async findAllPeople(sort_by?: string, order?: string) {
+    // @ts-ignore
+    const people = await this.people.getAllThePeople();
+    // empty array to store sorted array
+    let poepleSorted = [];
+    // Set ascending / decending
+    let ordered = true;
+    switch (order) {
+      case null:
+        ordered = true;
+        break;
+      case 'Accending':
+        ordered = true;
+        break;
+      case 'Deccending':
+        ordered = false;
+        break;
+      default:
+        ordered = true;
+    }
+    switch (sort_by) {
+      case "Alphabetical":
+        poepleSorted = Sorted(people, 'name', ordered);
+        break;
+      case 'Appearances':
+        poepleSorted = people;
+      default:
+        poepleSorted = people;
+    }
+
+    return poepleSorted;
   }
+
 }
 
-export default PersonService;
+export default PeopleService;

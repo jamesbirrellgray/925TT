@@ -1,26 +1,26 @@
 import { People, Person } from '@interfaces/people.interface';
 import SwapiPeopleData from '@/data/swapiPeople.data';
 import { SwapiPeople, SwapiPerson } from '@interfaces/swapiPeople.interface';
+import { SWAPI_BASE_URL } from '@config';
 
 class PeopleModel {
+
+  // Set up the data
   public swapiPeopleData = new SwapiPeopleData();
 
-  public async findAllPeople(page?: string): Promise<Person[]> {
-    // Get the data from the model (SWAPI Request)
-    const peopleData: SwapiPeople = await this.swapiPeopleData.getSwapiPeople(page);
-    const peopleResults = this.mapReducePeople(peopleData);
-    // @ts-ignore
-    return peopleResults;
-  }
-
-  private mapReducePeople(swapiPeople: SwapiPeople) {
-    const peopleDataResults: SwapiPerson[] = swapiPeople.results;
-    // Map to new object
-    const reducedPeopleData = peopleDataResults.map(person => ({ name: person.name, height: person.height, url: person.url }));
-    // inject new people list
-    const peopleResults: People = { ...swapiPeople, results: reducedPeopleData };
-    return peopleResults;
-  }
+  // Send it
+  public getAllThePeople = async () => {
+    return await this.swapiPeopleData.getAllSwapiPeople({ url: SWAPI_BASE_URL + 'people' })
+      .then(data => {
+        // @ts-ignore
+        // Reduce / Map unwanted data
+        const reducedPeopleData = data.map(person => ({ name: person.name, height: person.height, url: person.url }));
+        return reducedPeopleData;
+      })
+      .catch(err => {
+        console.error('error', err);
+      });
+  };
 }
 
 export default PeopleModel;

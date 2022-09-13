@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 2.0.3
 info:
   title: Assignment-phase-01 - OpenAPI 3.0
   description: |-
@@ -15,8 +15,8 @@ externalDocs:
 servers:
   - url: https://TBC/
 tags:
-  - name: people
-    description: seatch for the people
+  - name: People API
+    description: Search for the people
 paths:
   # [GET] People
   /people:
@@ -25,26 +25,38 @@ paths:
           - People
         summary: Find the people
         description: Multiple status values can be provided with comma separated strings
-        operationId: findPetsByStatus
+        operationId: findThePeople
         parameters:
           - name: page
             in: query
-            description: used for pagination
+            description: Page number for pagination
             required: false
             schema:
               type: number
-          # - name: sort
-          #   in: query
-          #   description: Status values that need to be considered for filter
-          #   required: false
-          #   explode: true
-          #   schema:
-          #     type: string
-          #     default: available
-          #     enum:
-          #       - available
-          #       - pending
-          #       - sold
+          - name: sort_by
+            in: query
+            description: Sort the results
+            required: false
+            type: "string"
+            explode: true
+            enum: 
+              - "Alphabetical"
+              - "Appearances"
+            items:
+              type: "string"
+              default: "Alphabetical"
+          - name: order
+            in: query
+            description: Order the results
+            required: false
+            type: "string"
+            explode: true
+            enum:
+              - "Accending"
+              - "Deccending"
+            items:
+              type: "string"
+              default: "Accending"
         responses:
           '200':
             description: successful operation
