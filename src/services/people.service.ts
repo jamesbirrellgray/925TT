@@ -5,8 +5,10 @@ import FilmModel from '@/models/films.model';
 import Sorted from '@utils/sorted';
 
 class PeopleService {
-  public people = new peopleModel();
-  public films = new FilmModel();
+  
+  private people = new peopleModel();
+  private films = new FilmModel();
+
   public async findAllPeople(sort_by?: string, order?: string) {
     // @ts-ignore
     const people: Promise<People> = await this.people.getAllThePeople();
@@ -33,14 +35,14 @@ class PeopleService {
     switch (sort_by) {
       // Task 3 sort alphabetically
       case 'Alphabetical':
-        poepleSorted = Sorted(people, 'name', ordered);
+        poepleSorted = Sorted(this.addApperences(films, people), 'name', ordered);
         break;
-       // Task 2 srt 
+      // Task 4 sort by Appearances
       case 'Appearances':
         poepleSorted = Sorted(this.addApperences(films, people), 'appearances', ordered);
         break;
       default:
-        poepleSorted = people;
+        poepleSorted = this.addApperences(films, people);
     }
 
     return poepleSorted;
@@ -62,7 +64,6 @@ class PeopleService {
       person.appearances = countAppearances(appearances, url);
     });
     // @ts-ignore
-    console.log(people);
     return people;
   };
 }
