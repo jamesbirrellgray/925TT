@@ -4,7 +4,7 @@ import { SWAPI_BASE_URL } from '@config';
 
 class FilmModel {
   // Set up the data
-  public swapiFilmData = new SwapiFilmData();
+  private swapiFilmData = new SwapiFilmData();
 
   // Send it
   public getAllTheFilms = async () => {

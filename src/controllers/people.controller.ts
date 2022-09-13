@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
+// Task 1
 import personService from '@services/people.service';
+// Task 2
 import Paginagtor from '@utils/paginator';
-import userService from '@services/users.service';
 
 class PeopleController {
-  public people = new personService();
-  public userService = new userService();
+  // Load the data
+  private people = new personService();
+  // Handle the request
   public getPeople = async (
     req: Request<{
       page?: number;

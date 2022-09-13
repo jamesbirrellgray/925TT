@@ -1,12 +1,10 @@
 import { People } from '@interfaces/people.interface';
-import { SwapiPeople } from '@/interfaces/swapiPeople.interface';
 import SwapiPeopleData from '@/data/swapiPeople.data';
-import SwapiFilmData from '@/data/swapiFilms.data';
 import { SWAPI_BASE_URL } from '@config';
 
 class PeopleModel {
   // Set up the data
-  public swapiPeopleData = new SwapiPeopleData();
+  private swapiPeopleData = new SwapiPeopleData();
 
   // Send it
   public getAllThePeople = async () => {
