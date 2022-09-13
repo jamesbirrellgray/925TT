@@ -1,16 +1,20 @@
 import { People } from '@interfaces/people.interface';
+import { Films } from '@/interfaces/films.interface';
 import peopleModel from '@models/people.model';
+import FilmModel from '@/models/films.model';
 import Sorted from '@utils/sorted';
 
 class PeopleService {
- 
   public people = new peopleModel();
-
+  public films = new FilmModel();
   public async findAllPeople(sort_by?: string, order?: string) {
     // @ts-ignore
-    const people = await this.people.getAllThePeople();
+    const people: Promise<People> = await this.people.getAllThePeople();
+    // @ts-ignore
+    const films: Promise<Films> = await this.films.getAllTheFilms();
+
     // empty array to store sorted array
-    let poepleSorted = [];
+    let poepleSorted: Promise<People>;
     // Set ascending / decending
     let ordered = true;
     switch (order) {
@@ -25,13 +29,16 @@ class PeopleService {
         break;
       default:
         ordered = true;
-    }  
+    }
     switch (sort_by) {
-      case "Alphabetical":
+      // Task 3 sort alphabetically
+      case 'Alphabetical':
         poepleSorted = Sorted(people, 'name', ordered);
         break;
+       // Task 2 srt 
       case 'Appearances':
-        poepleSorted = people;
+        poepleSorted = Sorted(this.addApperences(films, people), 'appearances', ordered);
+        break;
       default:
         poepleSorted = people;
     }
@@ -39,6 +46,25 @@ class PeopleService {
     return poepleSorted;
   }
 
+  // Step 4 - Filter by appearences
+  private addApperences = (films, people) => {
+    // make array of appearances
+    const appearances = [].concat.apply(
+      [],
+      films.map(a => a.characters),
+    );
+    // counts the number of appearences
+    const countAppearances = (films, url) => films.reduce((a, v) => (v === url ? a + 1 : a), 0);
+    // could have use map but a forEach modigies the actual array
+    // this adds an appearnces peoperty with count as the value
+    people.forEach(person => {
+      var url = person.url;
+      person.appearances = countAppearances(appearances, url);
+    });
+    // @ts-ignore
+    console.log(people);
+    return people;
+  };
 }
 
 export default PeopleService;
