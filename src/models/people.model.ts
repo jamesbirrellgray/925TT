@@ -1,6 +1,7 @@
 import { People } from '@interfaces/people.interface';
 import { SwapiPeople } from '@/interfaces/swapiPeople.interface';
 import SwapiPeopleData from '@/data/swapiPeople.data';
+import SwapiFilmData from '@/data/swapiFilms.data';
 import { SWAPI_BASE_URL } from '@config';
 
 class PeopleModel {
