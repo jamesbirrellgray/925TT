@@ -1,6 +1,6 @@
 import { People } from '@interfaces/people.interface';
 import peopleModel from '@models/people.model';
-import Sorted from '@/utils/sorted';
+import Sorted from '@utils/sorted';
 
 class PeopleService {
  
@@ -25,7 +25,7 @@ class PeopleService {
         break;
       default:
         ordered = true;
-    }
+    }  
     switch (sort_by) {
       case "Alphabetical":
         poepleSorted = Sorted(people, 'name', ordered);
