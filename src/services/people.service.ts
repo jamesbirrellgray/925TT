@@ -1,5 +1,6 @@
 import { People } from '@interfaces/people.interface';
 import peopleModel from '@models/people.model';
+import Sorted from '@/utils/sorted';
 
 class PeopleService {
  
@@ -8,11 +9,27 @@ class PeopleService {
   public async findAllPeople(sort_by?: string, order?: string) {
     // @ts-ignore
     const people = await this.people.getAllThePeople();
-    //console.log(people);
-    let poepleSorted = people;
+    // empty array to store sorted array
+    let poepleSorted = [];
+    // Set ascending / decending
+    let ordered = true;
+    switch (order) {
+      case null:
+        ordered = true;
+        break;
+      case 'Accending':
+        ordered = true;
+        break;
+      case 'Deccending':
+        ordered = false;
+        break;
+      default:
+        ordered = true;
+    }
     switch (sort_by) {
-      case 'Alphabetcial':
-        poepleSorted = people;
+      case "Alphabetical":
+        poepleSorted = Sorted(people, 'name', ordered);
+        break;
       case 'Appearances':
         poepleSorted = people;
       default:
@@ -21,8 +38,6 @@ class PeopleService {
 
     return poepleSorted;
   }
-
-  private sortAlphabetical(order) {}
 
 }
 

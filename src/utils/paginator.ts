@@ -4,7 +4,7 @@ const Paginator = (items, page, per_page) => {
     offset = (page - 1) * per_page,
     paginatedItems = items.slice(offset).slice(0, per_page),
     total_pages = Math.ceil(items.length / per_page),
-    nextPage = parseInt(page)+1;
+    nextPage = parseInt(page) + 1;
   return {
     page: page,
     per_page: per_page,
@@ -14,6 +14,6 @@ const Paginator = (items, page, per_page) => {
     total_pages: total_pages,
     data: paginatedItems,
   };
-}
+};
 
 export default Paginator;
