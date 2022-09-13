@@ -1,17 +1,14 @@
-import { hash } from 'bcrypt';
-import { CreatePersonDto } from '@dtos/people.dto';
-import { HttpException } from '@exceptions/HttpException';
 import { People } from '@interfaces/people.interface';
 import peopleModel from '@models/people.model';
-import { isEmpty } from '@utils/util';
 
-class PersonService {
+class PeopleService {
+ 
   public people = new peopleModel();
 
-  public async findAllPeople(page?: string, sort_by?: string, order?: string) {
+  public async findAllPeople(sort_by?: string, order?: string) {
     // @ts-ignore
-    const people = await this.people.findAllPeople(page);
-    console.log(people);
+    const people = await this.people.getAllThePeople();
+    //console.log(people);
     let poepleSorted = people;
     switch (sort_by) {
       case 'Alphabetcial':
@@ -21,11 +18,12 @@ class PersonService {
       default:
         poepleSorted = people;
     }
+
+    return poepleSorted;
   }
 
-  private sortAlphabetical(order) {
-    
-  }
+  private sortAlphabetical(order) {}
+
 }
 
-export default PersonService;
+export default PeopleService;
