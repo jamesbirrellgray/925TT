@@ -11,8 +11,7 @@ class PeopleModel {
     return await this.swapiPeopleData
       .getAllSwapiPeople({ url: SWAPI_BASE_URL + 'people' })
       .then(data => {
-        //@ts-ignore
-        const reducedPeopleData: Promise<People> = data.map((person: { name: any; height: any; url: any }) => ({
+        const reducedPeopleData: Promise<People> = Object(data).map((person: { name: any; height: any; url: any }) => ({
           name: person.name,
           height: person.height,
           url: person.url,
